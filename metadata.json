@@ -1,0 +1,6 @@
+{
+  "name": "Bright Smile Dental",
+  "description": "Your Texas Home for a Pain-Free, Brighter Smile. Modern, stress-free family dental clinic in Austin.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
