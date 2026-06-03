@@ -88,7 +88,7 @@ export default function TopNavBar({ currentView, setView, appointments, darkMode
               }`}
             >
               <span className="material-symbols-outlined text-lg">event_available</span>
-              Mis Citas
+              My Bookings
               {activeBookingsCount > 0 && (
                 <span className="absolute -top-1.5 -right-1.5 bg-red-500 text-white font-bold text-[10px] w-5 h-5 rounded-full flex items-center justify-center border-2 border-white dark:border-slate-900 animate-pulse">
                   {activeBookingsCount}
@@ -104,7 +104,7 @@ export default function TopNavBar({ currentView, setView, appointments, darkMode
           <button
             onClick={() => setDarkMode(!darkMode)}
             className="p-2.5 rounded-xl border border-slate-100 hover:bg-slate-50 dark:border-slate-800 dark:hover:bg-slate-800 text-slate-500 dark:text-slate-300 transition-all flex items-center justify-center cursor-pointer active:scale-95"
-            title={darkMode ? 'Cambiar a Modo Claro' : 'Cambiar a Modo Oscuro'}
+            title={darkMode ? 'Switch to Light Mode' : 'Switch to Dark Mode'}
           >
             <span className="material-symbols-outlined text-xl">
               {darkMode ? 'light_mode' : 'dark_mode'}
@@ -115,7 +115,7 @@ export default function TopNavBar({ currentView, setView, appointments, darkMode
             <button
               onClick={() => setView('bookings')}
               className="md:hidden p-2 text-slate-text dark:text-slate-300 hover:text-primary dark:hover:text-white rounded-xl relative focus:outline-none"
-              title="Mis Citas"
+              title="My Bookings"
             >
               <span className="material-symbols-outlined text-2xl">event_available</span>
               {activeBookingsCount > 0 && (

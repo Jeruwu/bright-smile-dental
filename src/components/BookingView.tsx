@@ -76,7 +76,7 @@ export default function BookingView({ selectedService, onAddAppointment, setView
   const handleConfirm = (e: React.FormEvent) => {
     e.preventDefault();
     if (!fullName.trim() || !phoneNumber.trim() || !emailAddress.trim()) {
-      alert('Por favor complete todos los datos requeridos.');
+      alert('Please complete all required fields.');
       return;
     }
 
@@ -222,7 +222,7 @@ export default function BookingView({ selectedService, onAddAppointment, setView
                       {/* Right: Selected Day's Hours options */}
                       <div className="flex flex-col justify-center">
                         <span className="text-[10px] font-bold text-slate-text/70 uppercase tracking-widest block mb-1">
-                          Agenda Disponibilidad
+                          Availability Schedule
                         </span>
                         <h3 className="text-base font-bold text-primary mb-4 flex items-center gap-1">
                           <span className="material-symbols-outlined text-teal-600 text-lg">event</span>
@@ -250,7 +250,7 @@ export default function BookingView({ selectedService, onAddAppointment, setView
                         </div>
                         <p className="text-[10px] text-slate-text/70 italic mt-4 flex items-center gap-1.5">
                           <span className="material-symbols-outlined text-[12px] font-bold text-teal-600">notification_important</span> 
-                          Días sábados y domingos cerrados por descanso médico.
+                          Saturdays and Sundays closed for medical rest.
                         </p>
                       </div>
                     </div>
@@ -410,14 +410,14 @@ export default function BookingView({ selectedService, onAddAppointment, setView
                 <span className="material-symbols-outlined text-5xl font-bold bg-white/20 p-3 rounded-full mb-3" style={{ fontVariationSettings: "'FILL' 1" }}>
                   check_circle
                 </span>
-                <h2 className="text-2xl font-bold font-heading">¡Cita Pre-Confirmada!</h2>
-                <p className="text-xs text-white/85 mt-1">Registrado exitosamente dentro de nuestro sistema clínico.</p>
+                <h2 className="text-2xl font-bold font-heading">Pre-Confirmed Appointment!</h2>
+                <p className="text-xs text-white/85 mt-1">Successfully registered in our clinical system.</p>
               </div>
 
               {/* Appointment card pass styling */}
               <div className="p-6 md:p-8 space-y-6">
                 <div className="border-b border-dashed border-slate-200 pb-6 text-center">
-                  <span className="text-[10px] uppercase tracking-wider text-slate-text/70 block font-semibold mb-1">CÓDIGO DE RESERVACIÓN</span>
+                  <span className="text-[10px] uppercase tracking-wider text-slate-text/70 block font-semibold mb-1">RESERVATION CODE</span>
                   <span className="text-xl font-bold font-heading text-primary bg-neutral-100 px-4 py-2 rounded-xl border border-slate-200/50">
                     CC-{(Math.floor(Math.random() * 900000) + 100000)}
                   </span>
@@ -425,21 +425,21 @@ export default function BookingView({ selectedService, onAddAppointment, setView
 
                 <div className="grid grid-cols-2 gap-y-4 gap-x-2 text-sm">
                   <div>
-                    <span className="text-xs text-slate-text/75 block font-semibold uppercase tracking-wider">Paciente:</span>
+                    <span className="text-xs text-slate-text/75 block font-semibold uppercase tracking-wider">Patient:</span>
                     <span className="font-bold text-primary text-base block">{confirmedBookingData.fullName}</span>
                   </div>
                   <div>
-                    <span className="text-xs text-slate-text/75 block font-semibold uppercase tracking-wider">Teléfono:</span>
+                    <span className="text-xs text-slate-text/75 block font-semibold uppercase tracking-wider">Phone:</span>
                     <span className="font-semibold text-primary block">{confirmedBookingData.phoneNumber}</span>
                   </div>
                   <div>
-                    <span className="text-xs text-slate-text/75 block font-semibold uppercase tracking-wider">Servicio Solicitado:</span>
+                    <span className="text-xs text-slate-text/75 block font-semibold uppercase tracking-wider">Requested Service:</span>
                     <span className="font-semibold text-primary block text-xs">{confirmedBookingData.reasonForVisit}</span>
                   </div>
                   <div>
-                    <span className="text-xs text-slate-text/75 block font-semibold uppercase tracking-wider">Formato Médico:</span>
+                    <span className="text-xs text-slate-text/75 block font-semibold uppercase tracking-wider">Medical Format:</span>
                     <span className="font-bold text-emerald-600 block flex items-center gap-1 text-xs">
-                      <span className="material-symbols-outlined text-sm font-semibold">shield</span> Clínicamente Seguro
+                      <span className="material-symbols-outlined text-sm font-semibold">shield</span> Clinically Safe
                     </span>
                   </div>
                 </div>
@@ -448,16 +448,16 @@ export default function BookingView({ selectedService, onAddAppointment, setView
                   <div className="flex items-center gap-3">
                     <span className="material-symbols-outlined text-trust-blue-cta text-3xl">event_available</span>
                     <div>
-                      <span className="text-xs text-slate-text/75 block font-semibold uppercase tracking-wider">Fecha y Hora Agendada:</span>
+                      <span className="text-xs text-slate-text/75 block font-semibold uppercase tracking-wider">Scheduled Date and Time:</span>
                       <span className="text-base font-extrabold text-primary">
-                        {confirmedBookingData.date} a las {confirmedBookingData.timeSlot}
+                        {confirmedBookingData.date} at {confirmedBookingData.timeSlot}
                       </span>
                     </div>
                   </div>
                 </div>
 
                 <div className="text-xs text-slate-text/80 leading-relaxed text-center px-4">
-                  Se ha enviado un mensaje SMS de confirmación y un recordatorio por correo electrónico. Podrá visualizar o cancelar esta cita en la pestaña de <span className="font-bold text-trust-blue-cta inline">"Mis Citas"</span> en el menú superior.
+                  A confirmation SMS and an email reminder have been sent. You can view or cancel this appointment in the <span className="font-bold text-trust-blue-cta inline">"My Bookings"</span> tab in the top menu.
                 </div>
 
                 <div className="pt-2">
@@ -466,7 +466,7 @@ export default function BookingView({ selectedService, onAddAppointment, setView
                     onClick={handleSuccessClose}
                     className="w-full bg-trust-blue-cta text-white font-bold py-3.5 rounded-full hover:bg-primary transition-all text-center text-sm cursor-pointer outline-none shadow-md hover:shadow-lg"
                   >
-                    Ver Mis Citas Agendadas
+                    View My Bookings
                   </button>
                 </div>
               </div>

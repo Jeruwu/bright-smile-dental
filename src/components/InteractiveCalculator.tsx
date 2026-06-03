@@ -8,20 +8,20 @@ interface Procedure {
 }
 
 const PROCEDURES: Procedure[] = [
-  { name: 'Limpieza y Examen Dental (Preventivo)', regularPrice: 210, membershipDiscount: 1.00, insuranceCover: 1.00 }, // Free with membership/insurance
-  { name: 'Examen de Rayos X Completo', regularPrice: 140, membershipDiscount: 1.00, insuranceCover: 1.00 }, // Free with membership/insurance
-  { name: 'Empaste Composite (Resina)', regularPrice: 190, membershipDiscount: 0.25, insuranceCover: 0.80 },
-  { name: 'Extracción Simple', regularPrice: 220, membershipDiscount: 0.20, insuranceCover: 0.70 },
-  { name: 'Corona Dental de Porcelana', regularPrice: 1250, membershipDiscount: 0.20, insuranceCover: 0.50 },
-  { name: 'Tratamiento de Conducto (Endodoncia)', regularPrice: 950, membershipDiscount: 0.20, insuranceCover: 0.80 },
-  { name: 'Blanqueamiento Dental Profesional', regularPrice: 450, membershipDiscount: 0.30, insuranceCover: 0.00 }, // Estético, no cubierto por seguro
+  { name: 'Cleaning and Dental Exam (Preventive)', regularPrice: 210, membershipDiscount: 1.00, insuranceCover: 1.00 }, // Free with membership/insurance
+  { name: 'Complete X-Ray Exam', regularPrice: 140, membershipDiscount: 1.00, insuranceCover: 1.00 }, // Free with membership/insurance
+  { name: 'Composite Filling (Resin)', regularPrice: 190, membershipDiscount: 0.25, insuranceCover: 0.80 },
+  { name: 'Simple Extraction', regularPrice: 220, membershipDiscount: 0.20, insuranceCover: 0.70 },
+  { name: 'Porcelain Dental Crown', regularPrice: 1250, membershipDiscount: 0.20, insuranceCover: 0.50 },
+  { name: 'Root Canal Treatment (Endodontics)', regularPrice: 950, membershipDiscount: 0.20, insuranceCover: 0.80 },
+  { name: 'Professional Teeth Whitening', regularPrice: 450, membershipDiscount: 0.30, insuranceCover: 0.00 }, // Estético, no cubierto por seguro
 ];
 
 export default function InteractiveCalculator() {
   const [coverageType, setCoverageType] = useState<'regular' | 'membership' | 'insurance'>('membership');
   const [selectedProcedures, setSelectedProcedures] = useState<string[]>([
-    'Limpieza y Examen Dental (Preventivo)', 
-    'Empaste Composite (Resina)'
+    'Cleaning and Dental Exam (Preventive)', 
+    'Composite Filling (Resin)'
   ]);
 
   const toggleProcedure = (name: string) => {
@@ -46,7 +46,7 @@ export default function InteractiveCalculator() {
         patientOwes += proc.regularPrice;
       } else if (coverageType === 'membership') {
         // Membership gives full free checkups, 20-30% off other procedures
-        if (procName.includes('Limpieza') || procName.includes('Rayos X')) {
+        if (procName.includes('Cleaning') || procName.includes('X-Ray')) {
           patientOwes += 0; // Included in Membership
         } else {
           patientOwes += proc.regularPrice * (1 - proc.membershipDiscount);
@@ -71,15 +71,15 @@ export default function InteractiveCalculator() {
       <div className="flex items-center gap-2 mb-6">
         <span className="material-symbols-outlined text-trust-blue-cta text-3xl">calculate</span>
         <div>
-          <h3 className="text-xl font-bold font-heading text-primary">Simulador de Precios Transparentes</h3>
-          <p className="text-xs text-slate-text">Visualiza tarifas y calcula tu ahorro al instante antes de visitarnos.</p>
+          <h3 className="text-xl font-bold font-heading text-primary">Transparent Price Simulator</h3>
+          <p className="text-xs text-slate-text">Visualize rates and calculate your savings instantly before visiting us.</p>
         </div>
       </div>
 
       {/* Select coverage type */}
       <div className="mb-6">
         <label className="block text-xs font-semibold uppercase tracking-wider text-slate-text/70 mb-2">
-          ¿Cuál es tu método de cobertura?
+          What is your coverage method?
         </label>
         <div className="grid grid-cols-3 gap-2">
           <button
@@ -91,7 +91,7 @@ export default function InteractiveCalculator() {
                 : 'border-slate-200 hover:border-slate-300 text-slate-text'
             }`}
           >
-            Sin Seguro / Particular
+            No Insurance / Out of Pocket
           </button>
           <button
             type="button"
@@ -103,7 +103,7 @@ export default function InteractiveCalculator() {
             }`}
           >
             <span className="text-[9px] uppercase tracking-wider absolute top-0 bg-trust-blue-cta text-white w-full text-center">Bestseller</span>
-            <span className="mt-1">Afiliado BrightSmile</span>
+            <span className="mt-1">BrightSmile Member</span>
           </button>
           <button
             type="button"
@@ -114,7 +114,7 @@ export default function InteractiveCalculator() {
                 : 'border-slate-200 hover:border-slate-300 text-slate-text'
             }`}
           >
-            Seguro Convencional
+            Conventional Insurance
           </button>
         </div>
       </div>
@@ -122,7 +122,7 @@ export default function InteractiveCalculator() {
       {/* Checklist of services */}
       <div className="mb-6">
         <label className="block text-xs font-semibold uppercase tracking-wider text-slate-text/70 mb-2">
-          Selecciona los Tratamientos / Servicios:
+          Select Treatments / Services:
         </label>
         <div className="space-y-2 max-h-[220px] overflow-y-auto pr-2 scrollbar-thin">
           {PROCEDURES.map((proc, index) => {
@@ -148,10 +148,10 @@ export default function InteractiveCalculator() {
                     <span className="text-xs text-slate-text/80">
                       {proc.regularPrice === 210 || proc.regularPrice === 140 ? (
                         <span className="text-emerald-600 font-semibold bg-emerald-50 px-1.5 py-0.5 rounded text-[10px]">
-                          Gratis con Afiliación
+                          Free with Membership
                         </span>
                       ) : (
-                        <span>Descuento del {Math.round(proc.membershipDiscount * 100)}% disponible</span>
+                        <span>{Math.round(proc.membershipDiscount * 100)}% discount available</span>
                       )}
                     </span>
                   </div>
@@ -159,7 +159,7 @@ export default function InteractiveCalculator() {
                 <div className="text-right">
                   <span className="text-xs text-slate-text line-through block">${proc.regularPrice}</span>
                   <span className="text-sm font-bold text-primary">
-                    ${coverageType === 'membership' && (proc.name.includes('Limpieza') || proc.name.includes('Rayos X'))
+                    ${coverageType === 'membership' && (proc.name.includes('Cleaning') || proc.name.includes('X-Ray'))
                       ? 0
                       : Math.round(
                           coverageType === 'membership'
@@ -181,11 +181,11 @@ export default function InteractiveCalculator() {
       <div className="p-5 rounded-2xl bg-neutral-50 border border-neutral-200/80">
         <div className="grid grid-cols-2 gap-4 pb-4 border-b border-neutral-200 text-sm">
           <div>
-            <span className="text-slate-text/80 block">Precio Particular Total:</span>
+            <span className="text-slate-text/80 block">Total Out of Pocket Price:</span>
             <span className="text-base font-semibold text-slate-text line-through">${regularTotal}</span>
           </div>
           <div className="text-right">
-            <span className="text-slate-text/80 block">Tu Copago Estimado:</span>
+            <span className="text-slate-text/80 block">Your Estimated Copay:</span>
             <span className="text-lg font-bold text-trust-blue-cta">${Math.round(patientOwes)}</span>
           </div>
         </div>
@@ -194,7 +194,7 @@ export default function InteractiveCalculator() {
           <div className="flex items-center gap-2">
             <span className="material-symbols-outlined text-emerald-600 text-2xl">savings</span>
             <div>
-              <span className="text-xs text-slate-text uppercase font-semibold">Ahorro con este Plan:</span>
+              <span className="text-xs text-slate-text uppercase font-semibold">Savings with this Plan:</span>
               <span className="text-base font-bold text-emerald-600 block">
                 ${Math.round(savings)} {regularTotal > 0 && `(${Math.round((savings / regularTotal) * 100)}%)`}
               </span>
@@ -202,7 +202,7 @@ export default function InteractiveCalculator() {
           </div>
           {coverageType === 'membership' && (
             <div className="text-right text-[10px] text-teal-800 bg-teal-50 px-2.5 py-1 rounded-md max-w-[200px]">
-              ¡Tu plan incluye exámenes y limpiezas preventivas al 100%!
+              Your plan includes 100% preventive exams and cleanings!
             </div>
           )}
         </div>
@@ -210,7 +210,7 @@ export default function InteractiveCalculator() {
 
       <div className="text-center mt-4">
         <p className="text-[10px] text-slate-text/60 italic">
-          *Los cálculos son estimaciones ilustrativas basados en planes estándar. Las tarifas oficiales se confirman en consulta.
+          *Calculations are illustrative estimates based on standard plans. Official rates are confirmed during consultation.
         </p>
       </div>
     </div>

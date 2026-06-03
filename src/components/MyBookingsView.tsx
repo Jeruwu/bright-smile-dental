@@ -21,8 +21,8 @@ export default function MyBookingsView({ appointments, onCancelAppointment, setV
 
   const handleDownloadCalendar = (appointment: Appointment) => {
     // Generate simple simulated client .ics download payload or show success alert
-    const title = `Cita Bright Smile Dental - ${appointment.reasonForVisit}`;
-    const desc = `Cita odontologica para ${appointment.fullName}. Consulta en Austin, TX.`;
+    const title = `Bright Smile Dental Appointment - ${appointment.reasonForVisit}`;
+    const desc = `Dental appointment for ${appointment.fullName}. Consultation in Austin, TX.`;
     const location = "Bright Smile Dental, Austin, TX";
     
     // We can simulate creating a real file download! This is very premium.
@@ -59,10 +59,10 @@ END:VCALENDAR`;
         <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-8">
           <div>
             <h1 className="text-2xl md:text-3xl font-extrabold text-primary font-heading">
-              Gestión de Mis Citas
+              My Booking Management
             </h1>
             <p className="text-sm text-slate-text mt-1">
-              Visualiza, descarga invitaciones de calendario, o cancela tus reservaciones actuales.
+              View, download calendar invitations, or cancel your current reservations.
             </p>
           </div>
 
@@ -71,7 +71,7 @@ END:VCALENDAR`;
             className="bg-trust-blue-cta text-white text-xs font-bold px-5 py-3 rounded-full hover:bg-primary transition-all active:scale-95 cursor-pointer flex items-center gap-1.5"
           >
             <span className="material-symbols-outlined text-sm font-semibold">add</span>
-            Programar Nueva Cita
+            Schedule New Appointment
           </button>
         </div>
 
@@ -79,15 +79,15 @@ END:VCALENDAR`;
         {appointments.length === 0 ? (
           <div className="bg-white rounded-2xl shadow-md border border-slate-100 p-12 text-center">
             <span className="material-symbols-outlined text-slate-300 text-6xl mb-4">calendar_today</span>
-            <h3 className="text-lg font-bold text-primary font-heading">Aún no cuentas con citas registradas</h3>
+            <h3 className="text-lg font-bold text-primary font-heading">You don't have any appointments yet</h3>
             <p className="text-sm text-slate-text max-w-sm mx-auto mt-1 mb-6">
-              Programa tu limpieza dental, blanqueamiento o consulta con el Dr. Michael Chen hoy mismo.
+              Schedule your dental cleaning, whitening, or consultation with Dr. Michael Chen today.
             </p>
             <button
               onClick={() => setView('booking')}
               className="bg-soft-cyan-bg text-trust-blue-cta hover:bg-trust-blue-cta hover:text-white font-bold text-xs px-6 py-3 rounded-full transition-all cursor-pointer"
             >
-              Reservar Cita en 60 Segundos
+              Book Appointment in 60 Seconds
             </button>
           </div>
         ) : (
@@ -97,11 +97,11 @@ END:VCALENDAR`;
             <div>
               <div className="flex items-center gap-1.5 text-xs uppercase tracking-widest font-extrabold text-teal-700 bg-teal-50 px-3 py-1.5 rounded-lg w-fit mb-4">
                 <span className="material-symbols-outlined text-sm font-semibold">verified</span> 
-                Próximas Reservas Confirmadas ({activeAppointments.length})
+                Upcoming Confirmed Bookings ({activeAppointments.length})
               </div>
 
               {activeAppointments.length === 0 ? (
-                <p className="text-xs text-slate-text italic pl-1">No cuentas con citas confirmadas pendientes para las siguientes semanas.</p>
+                <p className="text-xs text-slate-text italic pl-1">You don't have any pending confirmed appointments for the coming weeks.</p>
               ) : (
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   {activeAppointments.map((app) => (
@@ -116,23 +116,23 @@ END:VCALENDAR`;
                           <span className="font-bold text-xs font-heading">{app.timeSlot}</span>
                         </div>
                         <span className="text-[9px] uppercase font-extrabold tracking-wider bg-emerald-500/30 text-emerald-300 border border-emerald-500/45 px-2 py-0.5 rounded-full">
-                          Confirmado
+                          Confirmed
                         </span>
                       </div>
 
                       <div className="p-5 space-y-4">
                         <div>
-                          <span className="text-[10px] uppercase font-bold text-slate-text/70 block">Fecha Agendada</span>
+                          <span className="text-[10px] uppercase font-bold text-slate-text/70 block">Scheduled Date</span>
                           <span className="text-base font-extrabold text-primary">{app.date}</span>
                         </div>
 
                         <div className="grid grid-cols-2 gap-2 text-xs">
                           <div>
-                            <span className="text-[10px] uppercase font-bold text-slate-text/70 block">Paciente</span>
+                            <span className="text-[10px] uppercase font-bold text-slate-text/70 block">Patient</span>
                             <span className="font-semibold text-primary">{app.fullName}</span>
                           </div>
                           <div>
-                            <span className="text-[10px] uppercase font-bold text-slate-text/70 block">Tratamiento</span>
+                            <span className="text-[10px] uppercase font-bold text-slate-text/70 block">Treatment</span>
                             <span className="font-semibold text-primary">{app.reasonForVisit}</span>
                           </div>
                         </div>
@@ -142,7 +142,7 @@ END:VCALENDAR`;
                           <div className="text-[14px] text-primary/45 tracking-[4px] font-mono leading-none font-bold">
                             ||||| | ||||| | ||| |||| || ||
                           </div>
-                          <span className="text-[9px] text-slate-text/60 mt-1 uppercase font-semibold">Cita ID: {app.id.toUpperCase()}</span>
+                          <span className="text-[9px] text-slate-text/60 mt-1 uppercase font-semibold">Appointment ID: {app.id.toUpperCase()}</span>
                         </div>
 
                         <div className="flex gap-2 pt-2 text-xs">
@@ -152,14 +152,14 @@ END:VCALENDAR`;
                             className="flex-1 bg-soft-cyan-bg text-trust-blue-cta text-center py-2.5 rounded-xl font-bold hover:bg-trust-blue-cta hover:text-white transition-colors cursor-pointer flex items-center justify-center gap-1"
                           >
                             <span className="material-symbols-outlined text-sm">calendar_add_on</span>
-                            Calendario .ics
+                            Calendar .ics
                           </button>
                           
                           <button
                             type="button"
                             onClick={() => setCancellingId(app.id)}
                             className="bg-red-50 text-red-600 px-3.5 rounded-xl font-semibold hover:bg-red-100 transition-colors cursor-pointer flex items-center justify-center"
-                            title="Cancelar Cita"
+                            title="Cancel Appointment"
                           >
                             <span className="material-symbols-outlined text-base">delete</span>
                           </button>
@@ -176,7 +176,7 @@ END:VCALENDAR`;
               <div className="pt-8 border-t border-slate-100/80">
                 <div className="flex items-center gap-1.5 text-xs uppercase tracking-widest font-extrabold text-slate-600 bg-slate-100 px-3 py-1.5 rounded-lg w-fit mb-4">
                   <span className="material-symbols-outlined text-sm">cancel</span>
-                  Historial de Citas Canceladas ({cancelledAppointments.length})
+                  Cancelled Appointments History ({cancelledAppointments.length})
                 </div>
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4 opacity-75">
@@ -186,12 +186,12 @@ END:VCALENDAR`;
                       className="bg-slate-50 border border-slate-200 rounded-xl p-4 flex justify-between items-center"
                     >
                       <div>
-                        <span className="text-[10px] text-slate-text/60 font-semibold uppercase block">Fecha cancelada</span>
+                        <span className="text-[10px] text-slate-text/60 font-semibold uppercase block">Cancelled Date</span>
                         <span className="text-sm font-bold text-slate-600 line-through block">{app.date} - {app.timeSlot}</span>
                         <span className="text-xs text-slate-text italic block mt-0.5">{app.reasonForVisit}</span>
                       </div>
                       <span className="text-[9px] font-extrabold tracking-wider bg-red-100 text-red-700 px-2.5 py-1 rounded-full uppercase border border-red-200">
-                        Cancelada
+                        Cancelled
                       </span>
                     </div>
                   ))}
@@ -218,9 +218,9 @@ END:VCALENDAR`;
                 <span className="material-symbols-outlined text-4xl" style={{ fontVariationSettings: "'FILL' 1" }}>error</span>
               </div>
               
-              <h3 className="text-lg font-extrabold text-primary font-heading">¿Seguro que deseas cancelar?</h3>
+              <h3 className="text-lg font-extrabold text-primary font-heading">Are you sure you want to cancel?</h3>
               <p className="text-sm text-slate-text my-2 leading-relaxed">
-                Esta acción liberará el espacio solicitado para que otro paciente en Austin pueda agendar al Dr. Michael Chen.
+                This action will release the requested slot so another patient in Austin can schedule Dr. Michael Chen.
               </p>
 
               <div className="mt-6 flex gap-3">
@@ -229,14 +229,14 @@ END:VCALENDAR`;
                   onClick={() => handleCancel(cancellingId)}
                   className="flex-1 bg-red-600 text-white font-bold py-2.5 rounded-xl hover:bg-red-700 active:scale-95 transition-all cursor-pointer text-xs"
                 >
-                  Sí, Cancelar Cita
+                  Yes, Cancel Appointment
                 </button>
                 <button
                   type="button"
                   onClick={() => setCancellingId(null)}
                   className="flex-1 bg-neutral-100 text-slate-text font-semibold py-2.5 rounded-xl hover:bg-neutral-200 transition-all cursor-pointer text-xs"
                 >
-                  Mantener Cita
+                  Keep Appointment
                 </button>
               </div>
             </motion.div>

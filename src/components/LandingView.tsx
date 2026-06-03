@@ -57,7 +57,7 @@ export default function LandingView({ setView, setSelectedService, reviews, onAd
   const handleSymptomSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     if (!symptomInput.trim()) {
-      setCustomAlertMessage("Por favor ingresa una consulta válida sobre tu salud dental antes de enviar.");
+      setCustomAlertMessage("Please enter a valid dental query before submitting.");
       setShowInteractiveAlert(true);
       return;
     }
@@ -65,15 +65,15 @@ export default function LandingView({ setView, setSelectedService, reviews, onAd
     const query = symptomInput.toLowerCase();
     let adviceText = '';
     if (query.includes('dolor') || query.includes('duele') || query.includes('pain') || query.includes('ache') || query.includes('molestia')) {
-      adviceText = '⚠️ RECOMENDACIÓN DE EMERGENCIA:\nEl dolor o molestia dental suele ser un indicador de infección activa, daño estructural o inflamación en el nervio. Es importante NO automedicarse con remedios caseros largos. Te recomendamos agendar una cita de "Emergency Dental Care" hoy mismo para alivio inmediato del dolor y evitar complicaciones mayores. Evita alimentos muy calientes o muy fríos.';
+      adviceText = '⚠️ EMERGENCY RECOMMENDATION:\nDental pain or discomfort is usually an indicator of active infection, structural damage, or nerve inflammation. It is important NOT to self-medicate. We recommend scheduling an "Emergency Dental Care" appointment today for immediate relief. Avoid very hot or cold foods.';
     } else if (query.includes('blanqueamiento') || query.includes('amarillo') || query.includes('mancha') || query.includes('estetic') || query.includes('white')) {
-      adviceText = '✨ RECOMENDACIÓN COSMÉTICA:\nEl blanqueamiento dental láser Zoom es ideal para revitalizar tu tono de esmalte de manera segura. Te invitamos a programar una consulta de "Teeth Whitening" o "Cosmetic Dentistry" con el Dr. Michael Chen para diseñar tu sonrisa.';
+      adviceText = '✨ COSMETIC RECOMMENDATION:\nZoom laser teeth whitening is ideal to safely revitalize your enamel tone. Schedule a "Teeth Whitening" or "Cosmetic Dentistry" consultation with Dr. Michael Chen.';
     } else if (query.includes('limpieza') || query.includes('sarro') || query.includes('preventiv') || query.includes('chequeo') || query.includes('clean')) {
-      adviceText = '🩺 INDICACIÓN PREVENTIVA:\nUna limpieza dental profesional debe realizarse cada 6 meses. Ayuda a remover placa endurecida (sarro) previniendo gingivitis y enfermedades de las encías. Puedes agendar una sesión de "Family & Pediatric Care" o "Routine Cleaning & Checkup" ahora mismo.';
-    } else if (query.includes('precio') || query.includes('costo') || query.includes('descuento') || query.includes('membresia') || query.includes('ahorro')) {
-      adviceText = '💳 INFORMACIÓN DE TARIFAS:\nEn Bright Smile Dental promovemos la total transparencia financiera. Consulta nuestro Simulador de Precios en esta misma página para calcular de forma interactiva tu ahorro particular frente a nuestro Plan de Afiliación.';
+      adviceText = '🩺 PREVENTIVE INDICATION:\nA professional dental cleaning should be done every 6 months. It removes tartar, preventing gingivitis and gum disease. Book a "Family & Pediatric Care" or "Routine Cleaning & Checkup" session right now.';
+    } else if (query.includes('precio') || query.includes('costo') || query.includes('descuento') || query.includes('membresia') || query.includes('ahorro') || query.includes('price')) {
+      adviceText = '💳 RATE INFORMATION:\nAt Bright Smile Dental we promote total financial transparency. Check our Price Simulator on this page to calculate your savings with our Membership Plan.';
     } else {
-      adviceText = `🦷 RECOMENDACIÓN GENERAL:\nGracias por consultar detalladamente acerca de "${symptomInput}". El Dr. Michael Chen sugiere realizar un examen físico completo y radiográfico en nuestra clínica para ofrecerte un diagnóstico certero y seguro. ¡Estamos listos para atenderte hoy!`;
+      adviceText = `🦷 GENERAL RECOMMENDATION:\nThank you for asking about "${symptomInput}". Dr. Michael Chen suggests a complete physical and radiographic exam in our clinic for an accurate diagnosis. We are ready to assist you today!`;
     }
 
     setCustomAlertMessage(adviceText);
@@ -81,7 +81,7 @@ export default function LandingView({ setView, setSelectedService, reviews, onAd
 
     // Also trigger standard native alert safely
     try {
-      window.alert(`Alerta Bright Smile - Consulta Dental: "${symptomInput}"\n\nRecomendación:\n${adviceText}`);
+      window.alert(`Bright Smile Alert - Dental Query: "${symptomInput}"\n\nRecommendation:\n${adviceText}`);
     } catch (err) {
       console.log("Could not trigger browser window.alert, displaying modern overlay alert instead", err);
     }
@@ -354,26 +354,26 @@ export default function LandingView({ setView, setSelectedService, reviews, onAd
       <section className="py-16 bg-neutral-50 dark:bg-slate-900/40 border-t border-b border-slate-100 dark:border-slate-800 transition-colors duration-300" id="consultation">
         <div className="max-w-4xl mx-auto px-4 text-center">
           <span className="text-xs uppercase tracking-widest font-bold text-trust-blue-cta dark:text-sky-400 bg-soft-cyan-bg dark:bg-slate-800 px-3 py-1 rounded-md">
-            Servicio al Cliente Autónomo
+            Self-Service Patient Support
           </span>
           <h2 className="text-3xl font-extrabold text-primary dark:text-white mt-3 mb-4 font-heading">
-            Consultorio Rápido de Síntomas
+            Quick Symptom Checker
           </h2>
           <p className="text-sm md:text-base text-slate-text dark:text-slate-300 max-w-2xl mx-auto mb-8 leading-relaxed">
-            ¿Sientes molestia o tienes alguna duda específica? Escribe tu síntoma o pregunta (por ejemplo: <code className="bg-slate-200/50 dark:bg-slate-800 px-1 py-0.5 rounded text-trust-blue-cta dark:text-sky-300 font-mono text-xs">dolor</code>, <code className="bg-slate-200/50 dark:bg-slate-800 px-1 py-0.5 rounded text-trust-blue-cta dark:text-sky-300 font-mono text-xs">blanqueamiento</code>, <code className="bg-slate-200/50 dark:bg-slate-800 px-1 py-0.5 rounded text-trust-blue-cta dark:text-sky-300 font-mono text-xs">limpieza</code>) y haz clic abajo para que nuestro asistente clínico virtual de Bright Smile Dental te brinde una alerta con recomendaciones e instrucciones inmediatas.
+            Feeling discomfort or have a specific question? Enter your symptom or question (e.g., <code className="bg-slate-200/50 dark:bg-slate-800 px-1 py-0.5 rounded text-trust-blue-cta dark:text-sky-300 font-mono text-xs">pain</code>, <code className="bg-slate-200/50 dark:bg-slate-800 px-1 py-0.5 rounded text-trust-blue-cta dark:text-sky-300 font-mono text-xs">whitening</code>, <code className="bg-slate-200/50 dark:bg-slate-800 px-1 py-0.5 rounded text-trust-blue-cta dark:text-sky-300 font-mono text-xs">cleaning</code>) and click below for our Bright Smile Dental virtual assistant to provide an alert with immediate recommendations.
           </p>
 
           <form onSubmit={handleSymptomSubmit} className="max-w-xl mx-auto bg-white dark:bg-slate-800/90 p-6 md:p-8 rounded-2xl shadow-lg border border-slate-100 dark:border-slate-750 flex flex-col gap-4">
             <div className="text-left">
               <label htmlFor="symptom-input" className="block text-xs font-bold text-slate-500 dark:text-slate-300 uppercase tracking-widest mb-2 font-heading">
-                Introduce tu Consulta o Síntoma:
+                Enter your Question or Symptom:
               </label>
               <input
                 id="symptom-input"
                 type="text"
                 value={symptomInput}
                 onChange={(e) => setSymptomInput(e.target.value)}
-                placeholder="Ej. Dolor de muela constante al morder, precio de corona..."
+                placeholder="E.g. Constant toothache when biting, crown price..."
                 className="w-full text-sm rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 text-primary dark:text-white focus:border-trust-blue-cta focus:ring-1 focus:ring-trust-blue-cta p-4 outline-none transition-all duration-200"
                 required
               />
@@ -384,7 +384,7 @@ export default function LandingView({ setView, setSelectedService, reviews, onAd
               className="bg-trust-blue-cta dark:bg-sky-500 hover:bg-primary dark:hover:bg-sky-400 text-white dark:text-slate-950 font-bold py-3.5 px-6 rounded-full transition-all duration-200 active:scale-95 shadow-md flex items-center justify-center gap-2 cursor-pointer outline-none text-sm tracking-wide"
             >
               <span className="material-symbols-outlined text-lg">medical_information</span>
-              Obtener Alerta de Recomendación Clínica
+              Get Clinical Recommendation Alert
             </button>
           </form>
         </div>
@@ -430,7 +430,7 @@ export default function LandingView({ setView, setSelectedService, reviews, onAd
                 onClick={() => setView('booking')}
                 className="bg-trust-blue-cta text-clinical-white font-bold text-xs md:text-sm px-6 py-3.5 rounded-full hover:bg-primary transition-all duration-200 flex items-center justify-center gap-1 cursor-pointer"
               >
-                Suscribirse Online al Plan
+                Subscribe to Plan Online
               </button>
               <button 
                 onClick={() => {
@@ -438,7 +438,7 @@ export default function LandingView({ setView, setSelectedService, reviews, onAd
                 }}
                 className="bg-transparent text-slate-text border border-slate-300 font-semibold text-xs md:text-sm px-6 py-3.5 rounded-full hover:bg-slate-100 transition-all duration-200 flex items-center justify-center gap-1.5"
               >
-                <span className="material-symbols-outlined text-lg">phone_in_talk</span> Consultar Especialista
+                <span className="material-symbols-outlined text-lg">phone_in_talk</span> Consult a Specialist
               </button>
             </div>
           </div>
@@ -455,9 +455,9 @@ export default function LandingView({ setView, setSelectedService, reviews, onAd
         {/* 4b. Embedded Interactive Price Calculator */}
         <div className="max-w-7xl mx-auto px-4 md:px-12 mt-16">
           <div className="text-center mb-8">
-            <span className="text-xs uppercase tracking-widest font-bold text-trust-blue-cta bg-soft-cyan-bg px-3 py-1 rounded">Herramienta Interactiva</span>
-            <h3 className="text-2xl font-bold font-heading text-primary mt-2">Calcula Tu Ahorro de Tratamientos</h3>
-            <p className="text-sm text-slate-text mt-1 max-w-xl mx-auto">Prueba activar o desactivar tratamientos dentales para comparar las tarifas particulares con nuestro Plan de Afiliación.</p>
+            <span className="text-xs uppercase tracking-widest font-bold text-trust-blue-cta bg-soft-cyan-bg px-3 py-1 rounded">Interactive Tool</span>
+            <h3 className="text-2xl font-bold font-heading text-primary mt-2">Calculate Your Treatment Savings</h3>
+            <p className="text-sm text-slate-text mt-1 max-w-xl mx-auto">Toggle dental treatments to compare out-of-pocket rates with our Membership Plan.</p>
           </div>
           <InteractiveCalculator />
         </div>
@@ -512,7 +512,7 @@ export default function LandingView({ setView, setSelectedService, reviews, onAd
         <div className="max-w-7xl mx-auto px-4 md:px-12">
           
           <div className="text-center mb-16 max-w-3xl mx-auto">
-            <span className="text-xs uppercase tracking-widest font-bold text-trust-blue-cta bg-soft-cyan-bg px-3 py-1 rounded">Opiniones Reales</span>
+            <span className="text-xs uppercase tracking-widest font-bold text-trust-blue-cta bg-soft-cyan-bg px-3 py-1 rounded">Real Opinions</span>
             <h2 className="text-3xl md:text-4xl font-extrabold text-primary mt-2 font-heading">
               What Our Patients Say
             </h2>
@@ -540,7 +540,7 @@ export default function LandingView({ setView, setSelectedService, reviews, onAd
                     </div>
                     {r.isCustom && (
                       <span className="text-[9px] uppercase tracking-wider font-extrabold text-teal-700 bg-teal-50 border border-teal-100 px-2 py-0.5 rounded-full">
-                        Usuario Actual
+                        Current User
                       </span>
                     )}
                   </div>
@@ -562,25 +562,25 @@ export default function LandingView({ setView, setSelectedService, reviews, onAd
           <div className="mt-16 max-w-xl mx-auto bg-white rounded-2xl shadow-md border border-slate-200/60 p-6 md:p-8">
             <h3 className="text-xl font-bold font-heading text-primary flex items-center gap-2 mb-2">
               <span className="material-symbols-outlined text-trust-blue-cta">rate_review</span>
-              ¿Ya participaste con nosotros? ¡Escribe tu reseña!
+              Already visited us? Write your review!
             </h3>
-            <p className="text-xs text-slate-text mb-6">Tu opinión nos ayuda a mantener nuestra calidad clínica alta y transparente.</p>
+            <p className="text-xs text-slate-text mb-6">Your opinion helps us keep our clinical quality high and transparent.</p>
 
             <form onSubmit={handleFeedbackSubmit} className="space-y-4">
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div>
-                  <label className="block text-xs font-semibold text-slate-text mb-1">Tu Nombre Completo</label>
+                  <label className="block text-xs font-semibold text-slate-text mb-1">Your Full Name</label>
                   <input
                     type="text"
                     required
                     value={newAuthor}
                     onChange={(e) => setNewAuthor(e.target.value)}
-                    placeholder="Ej. Sofía Garza"
+                    placeholder="E.g. Sophia Garza"
                     className="w-full text-sm rounded-xl border border-slate-200 focus:border-trust-blue-cta focus:ring-1 focus:ring-trust-blue-cta p-3 text-primary outline-none"
                   />
                 </div>
                 <div>
-                  <label className="block text-xs font-semibold text-slate-text mb-1">Calificación en Estrellas</label>
+                  <label className="block text-xs font-semibold text-slate-text mb-1">Star Rating</label>
                   <div className="flex items-center gap-1.5 h-[46px]">
                     {[1, 2, 3, 4, 5].map((star) => (
                       <button
@@ -597,19 +597,19 @@ export default function LandingView({ setView, setSelectedService, reviews, onAd
                         </span>
                       </button>
                     ))}
-                    <span className="text-xs font-bold text-slate-text pl-2">{newRating} de 5</span>
+                    <span className="text-xs font-bold text-slate-text pl-2">{newRating} out of 5</span>
                   </div>
                 </div>
               </div>
 
               <div>
-                <label className="block text-xs font-semibold text-slate-text mb-1">Tu Comentario / Experiencia</label>
+                <label className="block text-xs font-semibold text-slate-text mb-1">Your Comment / Experience</label>
                 <textarea
                   required
                   rows={3}
                   value={newContent}
                   onChange={(e) => setNewContent(e.target.value)}
-                  placeholder="Comenta sobre la atención del Dr. Chen, la tecnología o el ambiente..."
+                  placeholder="Comment on Dr. Chen's care, technology or environment..."
                   className="w-full text-sm rounded-xl border border-slate-200 focus:border-trust-blue-cta focus:ring-1 focus:ring-trust-blue-cta p-3 text-primary outline-none"
                 ></textarea>
               </div>
@@ -619,7 +619,7 @@ export default function LandingView({ setView, setSelectedService, reviews, onAd
                   type="submit"
                   className="bg-trust-blue-cta text-white font-bold text-xs px-6 py-3 rounded-full hover:bg-primary transition-all duration-200 active:scale-95 cursor-pointer"
                 >
-                  Enviar Reseña Pública
+                  Submit Public Review
                 </button>
 
                 <AnimatePresence>
@@ -630,7 +630,7 @@ export default function LandingView({ setView, setSelectedService, reviews, onAd
                       exit={{ opacity: 0 }}
                       className="text-xs text-emerald-600 bg-emerald-50 px-3 py-1.5 rounded-lg font-semibold flex items-center gap-1"
                     >
-                      <span className="material-symbols-outlined text-sm font-semibold">check</span> ¡Gracias! Reseña agregada arriba.
+                      <span className="material-symbols-outlined text-sm font-semibold">check</span> Thank you! Review added above.
                     </motion.div>
                   )}
                 </AnimatePresence>
@@ -665,13 +665,13 @@ export default function LandingView({ setView, setSelectedService, reviews, onAd
           </div>
           <div className="flex flex-wrap justify-center gap-6 mt-4 text-xs text-white/80">
             <span className="flex items-center gap-1">
-              <span className="material-symbols-outlined text-sm">schedule</span> Atendemos Emergencias 24/7
+              <span className="material-symbols-outlined text-sm">schedule</span> 24/7 Emergency Care
             </span>
             <span className="flex items-center gap-1">
-              <span className="material-symbols-outlined text-sm">verified_user</span> Sin Seguro Médico / Plan de Afiliados
+              <span className="material-symbols-outlined text-sm">verified_user</span> No Medical Insurance / Membership Plan
             </span>
             <span className="flex items-center gap-1">
-              <span className="material-symbols-outlined text-sm">payments</span> Financiamiento Disponible
+              <span className="material-symbols-outlined text-sm">payments</span> Financing Available
             </span>
           </div>
         </div>
@@ -702,7 +702,7 @@ export default function LandingView({ setView, setSelectedService, reviews, onAd
                 </div>
                 <div>
                   <h3 className="text-xl font-bold text-primary font-heading">{selectedServiceDetail.name}</h3>
-                  <p className="text-xs text-trust-blue-cta font-bold">Inicia desde {selectedServiceDetail.startingPrice}</p>
+                  <p className="text-xs text-trust-blue-cta font-bold">Starts from {selectedServiceDetail.startingPrice}</p>
                 </div>
               </div>
 
@@ -710,7 +710,7 @@ export default function LandingView({ setView, setSelectedService, reviews, onAd
                 <p>{selectedServiceDetail.longDescription}</p>
                 
                 <div>
-                  <h4 className="font-bold text-primary text-xs uppercase tracking-wider mb-2">Puntos claves de interés:</h4>
+                  <h4 className="font-bold text-primary text-xs uppercase tracking-wider mb-2">Key points of interest:</h4>
                   <div className="grid grid-cols-2 gap-2">
                     {selectedServiceDetail.benefits.map((b, i) => (
                       <div key={i} className="flex items-center gap-1.5 text-xs">
@@ -738,7 +738,7 @@ export default function LandingView({ setView, setSelectedService, reviews, onAd
                   onClick={() => setSelectedServiceDetail(null)}
                   className="px-6 py-3 border border-slate-200 rounded-full text-slate-text font-semibold hover:bg-slate-50 transition-all text-xs"
                 >
-                  Cerrar
+                  Close
                 </button>
               </div>
             </motion.div>
@@ -771,17 +771,17 @@ export default function LandingView({ setView, setSelectedService, reviews, onAd
                 </div>
                 <div>
                   <h3 className="text-lg font-bold text-primary dark:text-white font-heading">
-                    Alerta Clínica Emitida
+                    Clinical Alert Issued
                   </h3>
                   <p className="text-[10px] text-slate-text/75 dark:text-slate-400 uppercase tracking-widest font-semibold">
-                    Sistema de Orientación Bright Smile
+                    Bright Smile Guidance System
                   </p>
                 </div>
               </div>
 
               <div className="bg-slate-50 dark:bg-slate-950/50 border border-slate-100 dark:border-slate-800 rounded-xl p-4 mb-6">
                 <span className="text-[10px] font-bold text-slate-text/60 dark:text-slate-400 block uppercase tracking-wider mb-1">
-                  Texto de Consulta Introducido:
+                  Query Text Entered:
                 </span>
                 <p className="font-semibold text-primary dark:text-sky-300 text-sm italic">
                   "{symptomInput}"
@@ -810,14 +810,14 @@ export default function LandingView({ setView, setSelectedService, reviews, onAd
                   }}
                   className="flex-1 bg-trust-blue-cta dark:bg-sky-500 hover:bg-primary dark:hover:bg-sky-400 text-clinical-white dark:text-slate-950 font-bold py-3 rounded-full active:scale-95 transition-all text-xs cursor-pointer outline-none text-center"
                 >
-                  ¡Agendar Cita Rápida!
+                  Schedule Quick Appointment!
                 </button>
                 <button
                   type="button"
                   onClick={() => setShowInteractiveAlert(false)}
                   className="px-5 py-3 border border-slate-200 dark:border-slate-800 rounded-full text-slate-text dark:text-slate-300 font-semibold hover:bg-slate-100 dark:hover:bg-slate-800 transition-all text-xs outline-none cursor-pointer"
                 >
-                  Entendido
+                  Understood
                 </button>
               </div>
             </motion.div>
